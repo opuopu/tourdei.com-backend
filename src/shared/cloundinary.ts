@@ -3,10 +3,11 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const cloudinary = require("cloudinary").v2;
 
+// Removed hard-coded credentials because they were leaked; rotate any live keys immediately.
 cloudinary.config({
-  cloud_name: "dmtto8o5m",
-  api_key: "261943591525445",
-  api_secret: "NJMK01I1ckAVFgfEEi7M0esBS50",
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const uploadImage = async function (imagePath: any) {
